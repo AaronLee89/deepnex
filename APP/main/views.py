@@ -6,6 +6,11 @@ from flask import render_template
 
 @main.route('/')
 def index():
+    return render_template("main/index.html", title=u"首页")
+
+
+@main.route('/test')
+def test():
     return render_template("main/starter.html", title=u"首页")
 
 
