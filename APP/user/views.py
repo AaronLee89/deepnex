@@ -17,4 +17,7 @@ def reg():
 
 @user.route('/login/', methods=['GET', 'POST'])
 def login():
-    pass
+    if request.method == 'GET':
+        return render_template("user/base.html", title=u"登录")
+    elif request.method == 'POST':
+        pass

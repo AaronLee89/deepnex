@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block header_ext %}
+    <script src="{{ url_for('static', filename='js/parsley.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div id="content-container" class="container">
+        <div class="es-section login-section">
+            <div class="logon-tab clearfix">
+                <a class="active">注册</a>
+                <a href="#">注册</a>
+            </div>
+            <div class="login-main">
+                <form id="login-form" class="form-vertical" method="post"
+                      action="#" data-parsley-validate="">
+                    <div class="form-group mbl">
+                        <label class="control-label" for="login_username">邮箱</label>
+                        <input class="form-control input-lg" id="login_email" type="text" name="email"
+                               data-parsley-required-message="请输入您的登录邮箱"
+                               data-parsley-type="email" data-parsley-maxlength="128" required="required">
+                    </div>
+                    <div class="form-group mbl">
+                        <label class="control-label" for="login_password">密码</label>
+                        <div class="controls">
+                            <input class="form-control input-lg" id="login_password" type="password" name="password"
+                                   data-parsley-required-message="请输入您的登录密码"
+                                   data-parsley-maxlength="128" required="required">
+                        </div>
+                    </div>
+                    {% if config.CAPTCHA %}
+                    <div class="mbl">
+                        <div class="l-captcha" data-site-key="{{ config.CAPTCHA_SITE_KEY }}" data-width="100%"></div>
+                    </div>
+                    {% endif %}
+                    {% if message %}
+                        <div class="alert alert-danger mbl">{{ message }}</div>
+                    {% endif %}
+                    <div class="form-group mbl" style="margin-top: 20px">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+                    </div>
+                </form>
+
+                <div class="mbl">
+                    <a href="#">忘记密码</a>
+                    <span class="text-muted mhs">|</span>
+                    <span class="text-muted">没有账户？</span>
+                    <a href="#">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

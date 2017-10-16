@@ -7,11 +7,11 @@
     <section class="content-header">
       <h1>
         我的主页
-        <small>集群应用的统计详情</small>
+        <small>统计与详情</small>
       </h1>
       <ol class="breadcrumb">
-        <li style="font-size: 18px;"><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
-        <li class="active" style="font-size: 18px;">统计</li>
+        <li class="active" style="font-size: 18px;"><i class="fa fa-dashboard"></i> 主页</li>
+{#        <li class="active" style="font-size: 18px;">统计</li>#}
       </ol>
     </section>
 
@@ -22,9 +22,9 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>15</h3>
+              <h3>75<sup style="font-size: 20px">%</sup></h3>
 
-              <p>命名空间数量</p>
+              <p>用户资料完整度</p>
             </div>
             <div class="icon">
               <i class="ion ion-cube"></i>
@@ -39,7 +39,7 @@
             <div class="inner">
               <h3>14</h3>
 
-              <p>计算节点数量</p>
+              <p>应用实例数量</p>
             </div>
             <div class="icon">
               <i class="ion ion-android-desktop"></i>
@@ -54,7 +54,7 @@
             <div class="inner">
               <h3>5</h3>
 
-              <p>服务数量</p>
+              <p>可用模板数量</p>
             </div>
             <div class="icon">
               <i class="ion ion-android-list"></i>
@@ -81,16 +81,16 @@
 
     <div class="row">
         <div class="col-md-6">
-          <div class="box">
+          <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">一周内集群运行情况</h3>
+                <h3 class="box-title"><i class="fa fa-bar-chart"></i> 集群一周内运行情况图</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
               </div>
             </div>
             <div class="box-body">
-              <div id="chart-1" style="height: 300px;">
+              <div id="chart-1" style="height: 320px;">
 
               </div>
             </div>
@@ -98,16 +98,16 @@
         </div>
 
         <div class="col-md-6">
-          <div class="box">
+          <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">集群计算节点分布图</h3>
+                <h3 class="box-title"><i class="fa fa-pie-chart"></i> 集群实例分布图</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
               </div>
             </div>
             <div class="box-body">
-              <div id="chart-2" style="height: 300px;">
+              <div id="chart-2" style="height: 320px;">
 
               </div>
             </div>
@@ -118,63 +118,19 @@
     <div class="row">
         <div class="col-md-4">
             <div class="box">
-              <div class="box-header">
-                <h3 class="box-title">用户个人情况统计</h3>
+              <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-book"></i> 最新系统公告</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
+                  <button type="button" class="btn btn-box-tool"><i class="fa fa-ellipsis-h"></i></button>
                 </div>
               </div>
-              <div class="box-body no-padding">
-                <div style="height: 170px;">
-                    <table class="table table-condensed">
-                    <tbody>
-                    <tr>
-                      <td style="width: 23%">个人资料完整度</td>
-                      <td style="width: 65%">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-blue" style="width: 55%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-light-blue">55%</span></td>
-                    </tr>
-                    <tr>
-                      <td>教程学习进度</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-blue" style="width: 70%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-light-blue">70%</span></td>
-                    </tr>
-                    <tr>
-                      <td>命名空间使用率</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-blue" style="width: 100%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-light-blue">100%</span></td>
-                    </tr>
-                    <tr>
-                      <td>服务使用率</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-blue" style="width: 30%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-light-blue">30%</span></td>
-                    </tr>
-                    <tr>
-                      <td>节点使用率</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-blue" style="width: 90%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-light-blue">90%</span></td>
-                    </tr>
-                  </tbody></table>
+              <div class="box-body">
+                <div style="height: 180px">
+                    <p><a href="#">关于规范创建集群应用的通知</a><span style="margin-right: 10px;" class="pull-right">03-23</span></p>
+                    <p><a href="#">关于实行用户实名制的通知</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
+                    <p><a href="#">关于统计所有用户数据的具体通知</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
+                    <p><a href="#">关于规范创建集群应用的通知</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
+                    <p><a href="#">关于实行用户实名制的通知</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
                 </div>
               </div>
             </div>
@@ -183,22 +139,43 @@
         <div class="col-md-4">
             <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">系统公告</h3>
+                <h3 class="box-title"><i class="fa fa-align-left"></i> 近期新闻资讯</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
+                  <button type="button" class="btn btn-box-tool"><i class="fa fa-ellipsis-h"></i></button>
                 </div>
               </div>
               <div class="box-body">
-                <div style="height: 150px;">
-                    <p><a href="#">关于规范创建集群应用的通知</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
-                    <p><a href="#">关于实行用户实名制的通知</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
-                    <p><a href="#">关于统计所有用户数据的具体通知</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
+                <div style="height: 180px">
+                    <p><a href="#">腾讯云峰会召开 深圳超算成为政府关注重点</a><span style="margin-right: 10px;" class="pull-right">03-23</span></p>
+                    <p><a href="#">深圳超算助力广东大数据发展</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
+                    <p><a href="#">默生全球服务总裁Frank Bibens一行赴我中心参观交流</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
+                    <p><a href="#">圳市南山区委常委、统战部长鲍晓展一行来我中心参观交流</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
                 </div>
               </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="box">
+              <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-paper-plane"></i> 帮助中心</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool"><i class="fa fa-ellipsis-h"></i></button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div style="height: 180px">
+                    <p><a href="#">如何进行创建实例</a><span style="margin-right: 10px;" class="pull-right">03-23</span></p>
+                    <p><a href="#">如何完善个人资料</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
+                    <p><a href="#">如何正确使用集群</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
+                    <p><a href="#">忘记密码怎么办</a><span style="margin-right: 10px;" class="pull-right">03-21</span></p>
+                </div>
+              </div>
+            </div>
+        </div>
+
     </div>
+
 
     </section>
     <!-- /.content -->
@@ -223,7 +200,7 @@
                     trigger: 'axis'
                 },
                 legend: {
-                    data:['Spark集群','Hadoop集群']
+                    data:['Spark','Hadoop','Tensorflow']
                 },
                 toolbox: {
                     show : true,
@@ -248,7 +225,7 @@
                 ],
                 series : [
                     {
-                        name:'Spark集群',
+                        name:'Spark',
                         type:'bar',
                         data:[2, 4, 7, 23, 25, 33, 3],
                         itemStyle : {
@@ -256,11 +233,19 @@
                         }
                     },
                     {
-                        name:'Hadoop集群',
+                        name:'Hadoop',
                         type:'bar',
                         data:[2, 5, 9, 26, 28, 6, 2],
                         itemStyle : {
                             normal:{color:'grey'}
+                        }
+                    },
+                    {
+                        name:'Tensorflow',
+                        type:'bar',
+                        data:[0, 8, 9, 2, 8, 6, 11],
+                        itemStyle : {
+                            normal:{color:'red'}
                         }
                     }
                 ]
@@ -282,7 +267,7 @@
                 },
                 series : [
                     {
-                        name: '节点数量',
+                        name: '实例数量',
                         type: 'pie',
                         radius : '55%',
                         center: ['50%', '60%'],

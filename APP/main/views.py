@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 from . import main
+from ..models import User
 from flask import render_template
 
 
@@ -11,6 +12,7 @@ def index():
 
 @main.route('/test')
 def test():
+    u = User()
     return render_template("main/starter.html", title=u"首页")
 
 
