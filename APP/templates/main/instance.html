@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header_ext %}
+{% endblock %}
+
+{% block content %}
+    <section class="content-header">
+      <h1>
+        我的实例
+        <small>查看与管理实例</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li style="font-size: 18px;"><a href="{{ url_for('main.index') }}"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active" style="font-size: 18px;">我的实例</li>
+      </ol>
+    </section>
+
+    <section class="content container-fluid">
+
+    </section>
+    <!-- /.content -->
+{% endblock %}
+
+{% block footer_ext %}
+{% endblock %}

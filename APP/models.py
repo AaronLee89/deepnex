@@ -26,8 +26,7 @@ class User(UserMixin, db.Model):
     date_joined = db.Column(db.DateTime(), default=datetime.now)
 
     permissions = db.Column(db.Integer, default=1, nullable=False)  # 权限控制：管理员0, 用户1
-    avatar_url = db.Column(db.String(128),
-                           default="http://www.gravatar.com/avatar/")  # 建议设置为一个本地的相对路径的URL
+    avatar_url = db.Column(db.String(128))  # 建议设置为一个本地的相对路径的URL
 
     """以下三个函数分别用于对用户密码进行读取保护、散列化以及验证密码"""
     @property

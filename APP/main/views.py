@@ -1,19 +1,24 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 from . import main
-from ..models import User
 from flask import render_template
+from flask_login import login_required, current_user
 
 
 @main.route('/')
+@login_required
 def index():
-    return render_template("main/index.html", title=u"首页")
+    return render_template("main/index.html",
+                           title=u"我的主页",
+                           user=current_user)
 
 
-@main.route('/test')
-def test():
-    u = User()
-    return render_template("main/starter.html", title=u"首页")
+@main.route('/instance', methods=['GET', 'POST'])
+@login_required
+def instance():
+    return render_template("main/instance.html",
+                           title=u"我的实例",
+                           user=current_user)
 
 
 @main.app_errorhandler(404)

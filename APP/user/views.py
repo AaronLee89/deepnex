@@ -43,7 +43,7 @@ def reg():
             reg_user.email = email
             reg_user.password = password
             reg_user.username = username
-            reg_user.avatar_url = 'none.jpg'
+            reg_user.avatar_url = '/static/resource/img/none.jpg'
             db.session.add(reg_user)
             db.session.commit()
             return redirect(url_for('main.index'))
@@ -79,5 +79,7 @@ def login():
 
 
 @user.route('/logout/', methods=['GET', 'POST'])
+@login_required
 def logout():
-    pass
+    logout_user()
+    return redirect(url_for('user.login'))
