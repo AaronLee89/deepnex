@@ -3,53 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Deepnex Index</title>
+  <title>{% if title %}{{ title }}{% endif %}-Deepnex</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/_all-skins.min.css') }}">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 
-<body class="hold-transition skin-green">
+<body class="hold-transition skin-green layout-top-nav">
 <div class="wrapper">
 
-  <!-- Main Header -->
   <header class="main-header">
-    <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+        <div class="container">
+            <a href="/" class="navbar-brand"><b>Deep</b>Learning</a>
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('user.login') }}">用户登录</a></li>
+                <li><a href="{{ url_for('user.reg') }}">账号注册</a></li>
+                <li><a href="#">使用说明</a></li>
+              </ul>
+            </div>
+        </div>
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-  </div>
-  <!-- /.content-wrapper -->
+  {% block content %}
+  {% endblock %}
 
 </div>
-<!-- ./wrapper -->
+
 
 <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
 <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
 <script src="{{ url_for('static',filename='js/adminlte.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/parsley.js') }}"></script>
 
 </body>
 </html>
