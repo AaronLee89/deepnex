@@ -9,16 +9,14 @@ from flask_login import login_required, current_user
 @login_required
 def index():
     return render_template("main/index.html",
-                           title=u"我的主页",
-                           user=current_user)
+                           title=u"我的主页")
 
 
 @main.route('/instance', methods=['GET', 'POST'])
 @login_required
 def instance():
     return render_template("main/instance.html",
-                           title=u"我的实例",
-                           user=current_user)
+                           title=u"我的实例")
 
 
 @main.app_errorhandler(404)

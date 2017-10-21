@@ -45,6 +45,8 @@ def reg():
             reg_user.username = username
             reg_user.avatar_url = '/static/resource/img/none.jpg'
             db.session.add(reg_user)
+            login_user(reg_user)
+            reg_user.last_login = datetime.now()
             db.session.commit()
             return redirect(url_for('main.index'))
 
