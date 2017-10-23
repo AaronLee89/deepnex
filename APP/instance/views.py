@@ -7,7 +7,9 @@ from . import instance
 from .. import db
 
 
-@instance.route('/reg/', methods=['GET', 'POST'])
+@instance.route('/', methods=['GET', 'POST'])
+@login_required
 def index():
-    pass
+    return render_template("instance/instance.html",
+                           title=u"我的实例")
 

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block header_ext %}
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.min.css') }}">#}
+{#    <script src="{{ url_for('static',filename='plugins/datatables/jquery.dataTables.min.js') }}"></script>#}
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/instance.css') }}">
+    <script src="{{ url_for('static',filename='plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+
+{% endblock %}
+
+{% block content %}
+    <section class="content-header">
+      <h1>
+        我的实例
+        <small>查看与管理实例</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li style="font-size: 18px;"><a href="{{ url_for('main.index') }}"><i class="fa fa-tags"></i>主页</a></li>
+        <li class="active" style="font-size: 18px;">我的实例</li>
+      </ol>
+    </section>
+
+    <section class="content container-fluid">
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">应用实例列表</h3>
+
+                      <div class="box-tools pull-right">
+                        <button class="btn btn-info btn-sm">创建新实例</button>
+                      </div>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-striped dataTable" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>实例ID</th>
+                                    <th>实例名</th>
+                                    <th>实例类型</th>
+                                    <th>应用模板名</th>
+                                    <th>运行状态</th>
+                                    <th>创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Spark-1</td>
+                                    <td>Single</td>
+                                    <td>Spark分布式集群</td>
+                                    <td><span class="label label-success">运行中</span></td>
+                                    <td>2017-10-21</td>
+                                    <td><button class="btn btn-sm btn-success">查看</button> <button class="btn btn-sm btn-success">编辑</button>  <button class="btn btn-sm btn-danger">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Spark-2</td>
+                                    <td>Single</td>
+                                    <td>Spark分布式集群</td>
+                                    <td><span class="label label-primary">已关机</span></td>
+                                    <td>2017-10-21</td>
+                                    <td><button class="btn btn-sm btn-success">查看</button> <button class="btn btn-sm btn-success">编辑</button>  <button class="btn btn-sm btn-danger">删除</button></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Spark-4</td>
+                                    <td>Single</td>
+                                    <td>Spark分布式集群</td>
+                                    <td><span class="label label-danger">运行异常</span></td>
+                                    <td>2017-10-21</td>
+                                    <td><button class="btn btn-sm btn-success">查看</button> <button class="btn btn-sm btn-success">编辑</button>  <button class="btn btn-sm btn-danger">删除</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+    </section>
+    <!-- /.content -->
+{% endblock %}
+
+{% block footer_ext %}
+    <script>
+        $(document).ready(function(){
+            $('#myTable').DataTable({
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Chinese.json"
+                },
+                searching: false,
+                ordering: false
+            });
+        });
+    </script>
+{% endblock %}

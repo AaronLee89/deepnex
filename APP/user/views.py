@@ -3,8 +3,10 @@
 from flask import render_template, redirect, request, url_for, current_app, abort, jsonify, session
 from flask_login import login_user, logout_user, current_user, login_required
 from datetime import datetime
+from PIL import Image
 from . import user
 from ..models import User
+from ..util.file_manage import get_file_type
 from .. import db
 import os
 
@@ -80,8 +82,73 @@ def login():
                                    message_p=message_p)
 
 
-@user.route('/logout/', methods=['GET', 'POST'])
+@user.route('/logout/')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('user.login'))
+
+
+@user.route('/setting/information', methods=['GET', 'POST'])
+@login_required
+def setting_information():
+    if request.method == 'GET':
+        return render_template('user/setting_information.html', title=u'个人设置')
+    elif request.method == 'POST':
+        _form = request.form
+        cur_user = User.query.filter_by(email=current_user.email).first()
+        cur_user.phone = _form['phone']
+        cur_user.real_name = _form['real_name']
+        cur_user.address = _form['address']
+        db.session.commit()
+        return render_template('user/setting_information.html',
+                               title=u'个人设置',
+                               status='success')
+
+
+@user.route('/setting/password', methods=['GET', 'POST'])
+@login_required
+def setting_password():
+    if request.method == 'GET':
+        return render_template('user/setting_password.html', title=u'个人设置')
+    elif request.method == 'POST':
+        _form = request.form
+        cur_user = User.query.filter_by(email=current_user.email).first()
+        if cur_user.verify_password(_form['origin_password']):
+            if _form['new_password'] == _form['new_password2']:
+                cur_user.password = _form['new_password']
+                db.session.commit()
+                return render_template('user/setting_password.html', title=u'个人设置', status='success')
+            else:
+                fail_message = u'两次输入新密码不一致，请重新输入'
+        else:
+            fail_message = u'初始密码错误，请重新输入'
+
+        return render_template('user/setting_password.html',
+                               title=u'个人设置',
+                               fail_message=fail_message)
+
+
+@user.route('/setting/avatar', methods=['GET', 'POST'])
+@login_required
+def setting_avatar():
+    if request.method == 'GET':
+        return render_template('user/setting_avatar.html', title=u'个人设置')
+    elif request.method == 'POST':
+        _file = request.files['file']
+        avatar_folder = current_app.config['AVATAR_FOLDER']
+        file_type = get_file_type(_file.mimetype)
+        if _file and '.' in _file.filename and file_type == "img":
+            im = Image.open(_file)
+            im.thumbnail((128, 128), Image.ANTIALIAS)
+            image_path = os.path.join(avatar_folder, "%d.png" % current_user.id)
+            im.save(image_path, 'PNG')
+            unique_mark = os.stat(image_path).st_mtime
+            current_user.avatar_url = '/static/upload/avatar/' + '%d.png?t=%s' % (current_user.id, unique_mark)
+
+            db.session.commit()
+            message_success = u'更新图片成功'
+            return render_template('user/setting_avatar.html', message_success=message_success)
+        else:
+            message_fail = u"无效的文件类型"
+            return render_template('user/setting_avatar.html', message_fail=message_fail)

@@ -20,7 +20,11 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(128), unique=True, index=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
     email = db.Column(db.String(128), unique=True, index=True, nullable=False)
+
     description = db.Column(db.String(128))
+    real_name = db.Column(db.String(128))
+    phone = db.Column(db.String(128))
+    address = db.Column(db.String(128))
 
     last_login = db.Column(db.DateTime(), default=datetime.now)
     date_joined = db.Column(db.DateTime(), default=datetime.now)

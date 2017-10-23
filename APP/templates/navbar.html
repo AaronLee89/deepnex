@@ -48,7 +48,7 @@
                 <a href="#">权限 <b>3</b> 级</a>
               </div>
               <div class="col-xs-4 text-center">
-                <a href="#">已认证</a>
+                <a href="#">未认证</a>
               </div>
             </div>
             <!-- /.row -->
@@ -86,7 +86,7 @@
     <div class="pull-left info">
       <p>{{ current_user.username }}</p>
       <!-- Status -->
-      <a href="#"><i class="fa fa-circle text-success"></i> 认证用户</a>
+      <a href="#"><i class="fa fa-circle text-success"></i> 未认证用户</a>
     </div>
   </div>
 
@@ -94,12 +94,12 @@
   <ul class="sidebar-menu" data-widget="tree">
     <li class="header">控制台菜单</li>
     <li {# class="active" #}><a href="{{ url_for('main.index') }}"><i class="fa fa-home"></i> <span>我的主页</span></a></li>
-    <li><a href="{{ url_for('main.instance') }}"><i class="fa fa-cubes"></i> <span>我的实例</span></a></li>
+    <li><a href="{{ url_for('instance.index') }}"><i class="fa fa-cubes"></i> <span>我的实例</span></a></li>
     <li><a href="#"><i class="fa fa-steam-square"></i> <span>应用模板</span></a></li>
     <li><a href="#"><i class="fa fa-book"></i> <span>系统公告</span></a></li>
     <li><a href="#"><i class="fa fa-align-left"></i> <span>新闻资讯</span></a></li>
     <li><a href="#"><i class="fa fa-paper-plane"></i> <span>帮助中心</span></a></li>
-    <li><a href="#"><i class="fa fa-user"></i> <span>个人设置</span></a></li>
+    <li><a href="{{ url_for('user.setting_information') }}"><i class="fa fa-user"></i> <span>个人设置</span></a></li>
 
 {#        <li class="treeview">#}
 {#          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>#}

@@ -12,13 +12,6 @@ def index():
                            title=u"我的主页")
 
 
-@main.route('/instance', methods=['GET', 'POST'])
-@login_required
-def instance():
-    return render_template("main/instance.html",
-                           title=u"我的实例")
-
-
 @main.app_errorhandler(404)
 def page_404(err):
     return render_template('404.html', title='404'), 404
