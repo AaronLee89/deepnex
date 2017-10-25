@@ -4,4 +4,4 @@ from flask import Blueprint
 filter_blueprint = Blueprint('filters', __name__)
 
 # Register all the filter.
-from . import file_manage
+from . import file_manage, API_manage
