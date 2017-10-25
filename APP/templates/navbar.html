@@ -96,9 +96,9 @@
     <li {# class="active" #}><a href="{{ url_for('main.index') }}"><i class="fa fa-home"></i> <span>我的主页</span></a></li>
     <li><a href="{{ url_for('instance.index') }}"><i class="fa fa-cubes"></i> <span>我的实例</span></a></li>
     <li><a href="{{ url_for('application.index') }}"><i class="fa fa-steam-square"></i> <span>应用模板</span></a></li>
-    <li><a href="#"><i class="fa fa-book"></i> <span>系统公告</span></a></li>
-    <li><a href="#"><i class="fa fa-align-left"></i> <span>新闻资讯</span></a></li>
-    <li><a href="#"><i class="fa fa-paper-plane"></i> <span>帮助中心</span></a></li>
+    <li><a href="{{ url_for('article.notice') }}"><i class="fa fa-book"></i> <span>系统公告</span></a></li>
+    <li><a href="{{ url_for('article.news') }}"><i class="fa fa-align-left"></i> <span>新闻资讯</span></a></li>
+    <li><a href="{{ url_for('article.help') }}"><i class="fa fa-paper-plane"></i> <span>帮助中心</span></a></li>
     <li><a href="{{ url_for('user.setting_information') }}"><i class="fa fa-user"></i> <span>个人设置</span></a></li>
 
 {#        <li class="treeview">#}

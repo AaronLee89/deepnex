@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block header_ext %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}">
+    <script src="{{ url_for('static',filename='plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="content-header">
+      <h1>
+        系统公告
+        <small>查看本系统的相关公告</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li style="font-size: 18px;"><a href="{{ url_for('main.index') }}"><i class="fa fa-tags"></i>主页</a></li>
+        <li class="active" style="font-size: 18px;">系统公告</li>
+      </ol>
+    </section>
+
+    <section class="content container-fluid">
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">系统公告列表</h3>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-striped dataTable" id="myTable">
+                            <tbody>
+                                <tr>
+                                    <th width="5%">序号</th>
+                                    <th>标题</th>
+                                    <th><i class="fa fa-user"></i> 发布者</th>
+                                    <th><i class="fa fa-eye"></i> 浏览数</th>
+                                    <th><span class="glyphicon glyphicon-time"></span> 发布时间</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="{{ url_for('article.notice_detail', nid=10086) }}">关于申报国家重点研发计划“干细胞及转化研究”等15个重点专项2018年度项目的通知</a></td>
+                                    <td>广州超算中心</td>
+                                    <td><span class="label label-success"> 3328</span></td>
+                                    <td>2017-10-25</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><a href="#">关于申报国家重点研发计划新能源汽车等11个重点专项2018年度项目的通知</a></td>
+                                    <td>广州超算中心</td>
+                                    <td><span class="label label-success"> 323</span></td>
+                                    <td>2017-10-24</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><a href="#">2017年度中山大学国际青年学者珠海论坛-数据科学与计算机学院分论坛会议通知</a></td>
+                                    <td>广州超算中心</td>
+                                    <td><span class="label label-success"> 128</span></td>
+                                    <td>2017-10-23</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+
+{% block footer_ext %}
+    <script>
+        $(document).ready(function(){
+            $('#myTable').DataTable({
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Chinese.json"
+                },
+                searching: false,
+                ordering: false
+            });
+        });
+    </script>
+{% endblock %}

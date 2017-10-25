@@ -37,4 +37,6 @@ def create_app(config_name):
     app.register_blueprint(instance_blueprint, url_prefix='/instance')
     from .application import application as application_blueprint
     app.register_blueprint(application_blueprint, url_prefix='/application')
+    from .article import article as article_blueprint
+    app.register_blueprint(article_blueprint, url_prefix='/article')
     return app
