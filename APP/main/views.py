@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 from . import main
-from flask import render_template
+from flask import render_template, jsonify
 from flask_login import login_required, current_user
 
 
@@ -10,6 +10,14 @@ from flask_login import login_required, current_user
 def index():
     return render_template("main/index.html",
                            title=u"我的主页")
+
+
+@main.route('/test')
+def test():
+    d = dict()
+    d['username'] = 'zzp'
+    d['password'] = '123456'
+    return jsonify(d)
 
 
 @main.app_errorhandler(404)

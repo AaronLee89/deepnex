@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block header_ext %}
+{% endblock %}
+
+
+{% block content %}
+    <section class="content-header">
+      <h1>
+        实例详情
+        <small>实例详情与实例业务参数</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li style="font-size: 18px;"><a href="{{ url_for('main.index') }}"><i class="fa fa-tags"></i>主页</a></li>
+        <li style="font-size: 18px;"><a href="{{ url_for('instance.index') }}">我的实例</a></li>
+        <li class="active" style="font-size: 18px;">Spark1</li>
+      </ol>
+    </section>
+
+    <section class="content container-fluid container">
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">实例详情列表</h3>
+                      <div class="box-tools pull-right">
+                        <a href="{{ url_for('instance.index') }}" class="btn btn-info btn-sm">返回实例列表</a>
+                      </div>
+                    </div>
+
+                    <div class="box-body">
+                        <table class="table table-bordered dataTable">
+                            <tbody>
+                                <tr>
+                                    <th>实例ID</th>
+                                    <td>1010</td>
+                                    <th>实例名</th>
+                                    <td>Spark-4</td>
+                                </tr>
+                                <tr>
+                                    <th>应用ID</th>
+                                    <td>1011</td>
+                                    <th>应用模板名</th>
+                                    <td>Spark史诗集群</td>
+                                </tr>
+                                <tr>
+                                    <th>所属用户ID</th>
+                                    <td>101</td>
+                                    <th>所属用户名</th>
+                                    <td>邹哲鹏</td>
+                                </tr>
+                                <tr>
+                                    <th>创建时间</th>
+                                    <td>2017-08-01</td>
+                                    <th>结束时间</th>
+                                    <td>2017-09-01</td>
+                                </tr>
+                                <tr>
+                                    <th>运行参数开始时间</th>
+                                    <td>2017-08-01</td>
+                                    <th>运行参数结束时间</th>
+                                    <td>2017-09-01</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">实例业务参数</h3>
+                    </div>
+
+                    <div class="box-body">
+                        <table class="table table-bordered dataTable">
+                            <tbody>
+                                <tr>
+                                    <th>参数A</th>
+                                    <td>值A</td>
+                                    <th>参数B</th>
+                                    <td>值B</td>
+                                </tr>
+                                <tr>
+                                    <th>参数A</th>
+                                    <td>值A</td>
+                                    <th>参数B</th>
+                                    <td>值B</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block footer_ext %}
+{% endblock %}

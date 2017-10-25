@@ -10,6 +10,13 @@ from .. import db
 @instance.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
-    return render_template("instance/instance.html",
+    return render_template("instance/index.html",
                            title=u"我的实例")
+
+
+@instance.route('/<int:iid>', methods=['GET', 'POST'])
+@login_required
+def detail(iid):
+    return render_template("instance/detail.html",
+                           title=u"实例详情")
 

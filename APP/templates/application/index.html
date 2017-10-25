@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block header_ext %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/application.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section class="content-header">
+      <h1>
+        应用模板
+        <small>查看当前可用的应用模板以及详情</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li style="font-size: 18px;"><a href="{{ url_for('main.index') }}"><i class="fa fa-tags"></i>主页</a></li>
+        <li class="active" style="font-size: 18px;">应用模板</li>
+      </ol>
+    </section>
+
+    <section class="content container-fluid">
+        <div class="app-list" style="margin-top: 20px">
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="app-item">
+                    <div class="app-img">
+                        <a href="http://nscc.hnu.edu.cn/" target="_blank">
+                            <img src="{{ url_for('static', filename='resource/img/test.jpg')}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="app-info">
+                        <div class="title">
+                            <a class="link-dark" href="#" target="_blank" title="Tensorflow深度学习集群">
+                                <strong>Tensorflow 深度学习集群模板</strong>
+                            </a>
+                        </div>
+                        <div style="margin: 10px;height: 50px;overflow: hidden">
+                            TensorFlow™ 是一个采用数据流图(data flow graphs),用于数值计算的开源软件库
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="app-item">
+                    <div class="app-img">
+                        <a href="http://nscc.hnu.edu.cn/" target="_blank">
+                            <img src="{{ url_for('static', filename='resource/img/test.jpg')}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="app-info">
+                        <div class="title">
+                            <a class="link-dark" href="#" target="_blank" title="Tensorflow深度学习集群">
+                                <strong>Tensorflow 深度学习集群模板</strong>
+                            </a>
+                        </div>
+                        <div style="margin: 10px;height: 50px;overflow: hidden">
+                            TensorFlow™ 是一个采用数据流图(data flow graphs),用于数值计算的开源软件库
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="app-item">
+                    <div class="app-img">
+                        <a href="http://nscc.hnu.edu.cn/" target="_blank">
+                            <img src="{{ url_for('static', filename='resource/img/test.jpg')}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="app-info">
+                        <div class="title">
+                            <a class="link-dark" href="#" target="_blank" title="Tensorflow深度学习集群">
+                                <strong>Tensorflow 深度学习集群模板</strong>
+                            </a>
+                        </div>
+                        <div style="margin: 10px;height: 50px;overflow: hidden">
+                            TensorFlow™ 是一个采用数据流图(data flow graphs),用于数值计算的开源软件库
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+    </section>
+
+{% endblock %}
+
+
+{% block footer_ext %}
+{% endblock %}
