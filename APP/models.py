@@ -30,6 +30,7 @@ class User(UserMixin, db.Model):
     date_joined = db.Column(db.DateTime(), default=datetime.now)
 
     permissions = db.Column(db.Integer, default=1, nullable=False)  # 权限控制：管理员0, 用户1
+    is_auth = db.Column(db.Integer, default=0, nullable=False)  # 是否被管理员通过认证。默认为0(未认证), 1(已认证)
     avatar_url = db.Column(db.String(128))  # 建议设置为一个本地的相对路径的URL
 
     """以下三个函数分别用于对用户密码进行读取保护、散列化以及验证密码"""

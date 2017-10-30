@@ -31,6 +31,8 @@ def create_app(config_name):
     app.register_blueprint(filter_blueprint)
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+    from .admin import admin as admin_blueprint
+    app.register_blueprint(admin_blueprint, url_prefix='/admin')
     from .user import user as user_blueprint
     app.register_blueprint(user_blueprint, url_prefix='/user')
     from .instance import instance as instance_blueprint
