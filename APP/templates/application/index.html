@@ -8,7 +8,7 @@
     <section class="content-header">
       <h1>
         应用模板
-        <small>查看当前可用的应用模板以及详情</small>
+        <small>点击应用模板，立刻创建实例</small>
       </h1>
       <ol class="breadcrumb">
         <li style="font-size: 18px;"><a href="{{ url_for('main.index') }}"><i class="fa fa-tags"></i>主页</a></li>
@@ -21,68 +21,95 @@
             <div class="col-lg-3 col-md-4 col-xs-6">
                 <div class="app-item">
                     <div class="app-img">
-                        <a href="#">
+                        <a href="#" data-toggle="modal" data-target="#create_modal">
                             <img src="{{ url_for('static', filename='resource/img/test2.jpg')}}" class="img-responsive">
                         </a>
                     </div>
                     <div class="app-info">
                         <div class="title">
-                            <a class="link-dark" href="#" target="_blank" title="Tensorflow深度学习集群">
-                                <strong>Tensorflow 深度学习集群模板</strong>
+                            <a class="link-dark" href="#" data-toggle="modal" data-target="#create_modal" target="_blank" title="Tensorflow深度学习集群">
+                                <strong>Spark 集群模板</strong>
                             </a>
                         </div>
-                        <div style="margin: 10px;height: 50px;overflow: hidden">
-                            TensorFlow™ 是一个采用数据流图(data flow graphs),用于数值计算的开源软件库
+                        <div style="margin: 10px;height: 58px;overflow: hidden">
+                            Apache Spark 是专为大规模数据处理而设计的快速通用的计算引擎
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-4 col-xs-6">
-                <div class="app-item">
-                    <div class="app-img">
-                        <a href="#">
-                            <img src="{{ url_for('static', filename='resource/img/test2.jpg')}}" class="img-responsive">
-                        </a>
-                    </div>
-                    <div class="app-info">
-                        <div class="title">
-                            <a class="link-dark" href="#" target="_blank" title="Tensorflow深度学习集群">
-                                <strong>Tensorflow 深度学习集群模板</strong>
-                            </a>
-                        </div>
-                        <div style="margin: 10px;height: 50px;overflow: hidden">
-                            TensorFlow™ 是一个采用数据流图(data flow graphs),用于数值计算的开源软件库
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-xs-6">
-                <div class="app-item">
-                    <div class="app-img">
-                        <a href="#">
-                            <img src="{{ url_for('static', filename='resource/img/test2.jpg')}}" class="img-responsive">
-                        </a>
-                    </div>
-                    <div class="app-info">
-                        <div class="title">
-                            <a class="link-dark" href="#" target="_blank" title="Tensorflow深度学习集群">
-                                <strong>Tensorflow 深度学习集群模板</strong>
-                            </a>
-                        </div>
-                        <div style="margin: 10px;height: 50px;overflow: hidden">
-                            TensorFlow™ 是一个采用数据流图(data flow graphs),用于数值计算的开源软件库
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+{#            <div class="col-lg-3 col-md-4 col-xs-6">#}
+{#                <div class="app-item">#}
+{#                    <div class="app-img">#}
+{#                        <a href="#">#}
+{#                            <img src="{{ url_for('static', filename='resource/img/test2.jpg')}}" class="img-responsive">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                    <div class="app-info">#}
+{#                        <div class="title">#}
+{#                            <a class="link-dark" href="#" target="_blank" title="Tensorflow深度学习集群">#}
+{#                                <strong>Tensorflow 集群模板</strong>#}
+{#                            </a>#}
+{#                        </div>#}
+{#                        <div style="margin: 10px;height: 58px;overflow: hidden">#}
+{#                            TensorFlow™ 是一个采用数据流图(data flow graphs),用于数值计算的开源软件库#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
 
         </div>
 
     </section>
 
+
+    <div class="modal fade" id="create_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="{{ url_for('instance.create') }}" method="post">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">创建实例</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="form-group form-horizontal row">
+                      <label class="col-sm-2 control-label">实例名：</label>
+                      <div class="col-sm-8">
+                        <input name="name" type="text" class="form-control" value="" placeholder="请输入实例名(仅限字母数字)">
+                      </div>
+                  </div>
+                  <div class="form-group form-horizontal row">
+                      <label class="col-sm-2 control-label">节点数：</label>
+                      <div class="col-sm-8">
+                        <input name="nodes" type="text" class="form-control" value="" placeholder="请输入节点数目(仅限整数)">
+                      </div>
+                  </div>
+                  <div class="form-group form-horizontal row">
+                      <label class="col-sm-2 control-label">CPU：</label>
+                      <div class="col-sm-8">
+                        <input name="cpu" type="text" class="form-control" value="" placeholder="请输入CPU(仅限整数，单位为个)">
+                      </div>
+                  </div>
+                  <div class="form-group form-horizontal row">
+                      <label class="col-sm-2 control-label">内存：</label>
+                      <div class="col-sm-8">
+                        <input name="memory" type="text" class="form-control" value="" placeholder="请输入内存大小(仅限整数，单位为M)">
+                      </div>
+                  </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary">提交</button>
+              </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 {% endblock %}
 
 
