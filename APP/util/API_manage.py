@@ -1,9 +1,11 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import requests,json
+from config import API_URL
+import requests
+import json
 
-BASE_URL = 'http://10.127.48.18:8080/'
+BASE_URL = API_URL
 LOGIN_DATA = '{"username":"guoguixin","password":"guoguixin"}'
 
 

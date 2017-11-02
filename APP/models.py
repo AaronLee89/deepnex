@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -66,14 +65,3 @@ class User(UserMixin, db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
-
-
-class Instance(db.Model):
-    __tablename__ = 'instances'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=False)
-    app_name = db.Column(db.String(128))
-    web_url = db.Column(db.String(128))
-    ssh_url = db.Column(db.String(128))
-    created_time = db.Column(db.DateTime(), default=datetime.now)
-    state = db.Column(db.Integer)
