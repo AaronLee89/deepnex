@@ -9,12 +9,12 @@
 {% block content %}
     <section class="content-header">
       <h1>
-        编辑资讯
+        编辑公告
       </h1>
       <ol class="breadcrumb">
         <li style="font-size: 18px;"><a href="{{ url_for('admin.index') }}"><i class="fa fa-tags"></i>主控制台</a></li>
-        <li style="font-size: 18px;"><a href="{{ url_for('admin.news') }}">新闻管理</a></li>
-        <li class="active" style="font-size: 18px;">编辑资讯</li>
+        <li style="font-size: 18px;"><a href="{{ url_for('admin.notice') }}">系统公告</a></li>
+        <li class="active" style="font-size: 18px;">编辑公告</li>
       </ol>
     </section>
 
@@ -24,22 +24,22 @@
             <div class="col-xs-10">
                 <div class="box box-success">
                     <div class="box-header">
-                      <h3 class="box-title">编辑资讯
+                      <h3 class="box-title">编辑公告
                       </h3>
                     </div>
                     <div class="box-body pad">
-                      <form action="{{ url_for('admin.news_edit',nid=news.id) }}" method="post" data-parsley-validate="">
+                      <form action="{{ url_for('admin.notice_edit',nid=notice.id) }}" method="post" data-parsley-validate="">
                           <div class="form-group">
-                              <label class="control-label">资讯标题:</label>
-                              <input name="title" type="text" class="form-control" style="max-width: 600px;" placeholder="请输入标题,不超过30字" value="{{ news.title }}" data-parsley-maxlength="30" required>
+                              <label class="control-label">公告标题:</label>
+                              <input name="title" type="text" class="form-control" style="max-width: 600px;" placeholder="请输入标题,不超过30字" value="{{ notice.title }}" data-parsley-maxlength="30" required>
                           </div>
                           <div class="form-group">
-                              <label class="control-label">资讯来源(发布者):</label>
-                              <input name="poster" type="text" class="form-control" style="max-width: 300px;" placeholder="请输入发布者,不超过10字" value="{{ news.poster }}" data-parsley-maxlength="10" required>
+                              <label class="control-label">公告来源(发布者):</label>
+                              <input name="poster" type="text" class="form-control" style="max-width: 300px;" placeholder="请输入发布者,不超过10字" value="{{ notice.poster }}" data-parsley-maxlength="10" required>
                           </div><br>
                           <div class="form-group">
                               <textarea name="content" class="textarea" placeholder="请输入资讯内容,字数不限"
-                                    style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required>{{ news.content }}</textarea>
+                                    style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required>{{ notice.content }}</textarea>
                           </div>
                           <div class="form-group">
                               <div class="pull-right">

@@ -3,7 +3,7 @@
 from flask import render_template, redirect, request, url_for, current_app, abort, jsonify, session
 from flask_login import login_user, logout_user, current_user
 from datetime import datetime
-from ..models import User, News
+from ..models import User, News, Notice
 from ..util.authorize import admin_login
 from . import admin
 from .. import db
@@ -130,13 +130,63 @@ def news_delete():
     return jsonify(status="success")
 
 
-@admin.route('/notice', methods=['GET', 'POST'])
+
+
+
+
+
+
+@admin.route('/notice')
 @admin_login
 def notice():
-    pass
+    """管理员查看公告列表"""
+    notice_list = Notice.query.all()
+    return render_template('admin/article/notice.html',
+                           title=u'系统公告管理',
+                           notice_list=notice_list)
 
 
-@admin.route('/help', methods=['GET', 'POST'])
+@admin.route('/notice/create', methods=['GET', 'POST'])
 @admin_login
-def help():
-    pass
+def notice_create():
+    """管理员创建公告"""
+    if request.method == 'GET':
+        return render_template('admin/article/notice_create.html', title=u'创建系统公告')
+    elif request.method == 'POST':
+        _form = request.form
+        title = _form['title']
+        poster = _form['poster']
+        content = _form['content'].replace("\n", "")
+        new_notice = Notice(title=title, poster=poster, content=content)
+        db.session.add(new_notice)
+        db.session.commit()
+        return redirect(url_for('admin.notice'))
+
+
+@admin.route('/notice/edit/<int:nid>', methods=['GET', 'POST'])
+@admin_login
+def notice_edit(nid):
+    """管理员编辑公告"""
+    if request.method == 'GET':
+        cur_notice = Notice.query.filter_by(id=nid).first_or_404()
+        return render_template('admin/article/notice_edit.html', title=u'编辑系统公告', notice=cur_notice)
+    elif request.method == 'POST':
+        _form = request.form
+        cur_notice = Notice.query.filter_by(id=nid).first_or_404()
+        cur_notice.title = _form['title']
+        cur_notice.poster = _form['poster']
+        cur_notice.content = _form['content']
+        db.session.commit()
+        return redirect(url_for('admin.notice'))
+
+
+@admin.route('/notice/delete', methods=['POST'])
+@admin_login
+def notice_delete():
+    """管理员删除公告"""
+    nid = request.form['nid']
+    cur_notice = Notice.query.filter_by(id=nid).first_or_404()
+    db.session.delete(cur_notice)
+    db.session.commit()
+    return jsonify(status="success")
+

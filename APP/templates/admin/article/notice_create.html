@@ -9,12 +9,12 @@
 {% block content %}
     <section class="content-header">
       <h1>
-        创建资讯
+        创建公告
       </h1>
       <ol class="breadcrumb">
         <li style="font-size: 18px;"><a href="{{ url_for('admin.index') }}"><i class="fa fa-tags"></i>主控制台</a></li>
-        <li style="font-size: 18px;"><a href="{{ url_for('admin.news') }}">新闻管理</a></li>
-        <li class="active" style="font-size: 18px;">创建资讯</li>
+        <li style="font-size: 18px;"><a href="{{ url_for('admin.notice') }}">系统公告</a></li>
+        <li class="active" style="font-size: 18px;">创建公告</li>
       </ol>
     </section>
 
@@ -24,13 +24,13 @@
             <div class="col-xs-10">
                 <div class="box box-success">
                     <div class="box-header">
-                      <h3 class="box-title">创建资讯
+                      <h3 class="box-title">创建公告
                       </h3>
                     </div>
                     <div class="box-body pad">
-                      <form action="{{ url_for('admin.news_create') }}" method="post" data-parsley-validate="">
+                      <form action="{{ url_for('admin.notice_create') }}" method="post" data-parsley-validate="">
                           <div class="form-group">
-                              <label class="control-label">资讯标题:</label>
+                              <label class="control-label">公告标题:</label>
                               <input name="title" type="text" class="form-control" style="max-width: 600px;" placeholder="请输入标题,不超过30字" value="" data-parsley-maxlength="30" required>
                           </div>
                           <div class="form-group">

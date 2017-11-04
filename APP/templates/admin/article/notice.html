@@ -10,12 +10,12 @@
 {% block content %}
     <section class="content-header">
       <h1>
-        新闻管理
-        <small>创建与编辑新闻资讯</small>
+        公告管理
+        <small>创建与编辑系统公告</small>
       </h1>
       <ol class="breadcrumb">
         <li style="font-size: 18px;"><a href="{{ url_for('admin.index') }}"><i class="fa fa-tags"></i>主控制台</a></li>
-        <li class="active" style="font-size: 18px;">新闻管理</li>
+        <li class="active" style="font-size: 18px;">系统公告</li>
       </ol>
     </section>
 
@@ -25,9 +25,9 @@
             <div class="col-xs-10">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                      <h3 class="box-title">新闻资讯管理列表</h3>
+                      <h3 class="box-title">系统公告管理列表</h3>
                       <div class="box-tools pull-right">
-                        <a href="{{ url_for('admin.news_create') }}" class="btn btn-success btn-sm">创建资讯</a>
+                        <a href="{{ url_for('admin.notice_create') }}" class="btn btn-success btn-sm">创建资讯</a>
                       </div>
                     </div>
                     <div class="box-body">
@@ -43,14 +43,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for n in news_list %}
+                                {% for n in notice_list %}
                                 <tr>
                                     <td>{{ loop.index }}</td>
                                     <td>{{ n.title }}</td>
                                     <td>{{ n.poster }}</td>
                                     <td><span class="label label-success"> {{ n.visitNum }}</span></td>
                                     <td>{{ n.updatedTime }}</td>
-                                    <td><a href="{{ url_for('admin.news_edit',nid=n.id) }}">编辑</a> | <a class="delete" href="javascript:void();" data-id="{{ n.id }}" data-toggle="modal" data-target="#modal-delete">删除</a></td>
+                                    <td><a href="{{ url_for('admin.notice_edit',nid=n.id) }}">编辑</a> | <a class="delete" href="javascript:void();" data-id="{{ n.id }}" data-toggle="modal" data-target="#modal-delete">删除</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -102,7 +102,7 @@
             $("#del-confirm").click(function(){
                 $.ajax({
                     type: "post",
-                    url: "{{ url_for('admin.news_delete') }}",
+                    url: "{{ url_for('admin.notice_delete') }}",
                     data: {
                         nid:nid
                     },
