@@ -37,27 +37,15 @@
                                     <th><i class="fa fa-eye"></i> 浏览数</th>
                                     <th><span class="glyphicon glyphicon-time"></span> 发布时间</th>
                                 </tr>
+                                {% for n in notices_list %}
                                 <tr>
-                                    <td>1</td>
-                                    <td><a href="{{ url_for('article.notice_detail', nid=10086) }}">关于申报国家重点研发计划“干细胞及转化研究”等15个重点专项2018年度项目的通知</a></td>
-                                    <td>广州超算中心</td>
-                                    <td><span class="label label-success"> 3328</span></td>
-                                    <td>2017-10-25</td>
+                                    <td>{{ loop.index }}</td>
+                                    <td><a href="{{ url_for('article.notice_detail', nid=n.id) }}">{{ n.title }}</a></td>
+                                    <td>{{ n.poster }}</td>
+                                    <td><span class="label label-success"> {{ n.visitNum }}</span></td>
+                                    <td>{{ n.updatedTime }}</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href="#">关于申报国家重点研发计划新能源汽车等11个重点专项2018年度项目的通知</a></td>
-                                    <td>广州超算中心</td>
-                                    <td><span class="label label-success"> 323</span></td>
-                                    <td>2017-10-24</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href="#">2017年度中山大学国际青年学者珠海论坛-数据科学与计算机学院分论坛会议通知</a></td>
-                                    <td>广州超算中心</td>
-                                    <td><span class="label label-success"> 128</span></td>
-                                    <td>2017-10-23</td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>

@@ -82,6 +82,7 @@ class Notice(db.Model):
     __tablename__ = 'notices'
     id = db.Column(db.Integer, primary_key=True)                  # 公告 ID
     title = db.Column(db.String(128), nullable=False)             # 公告标题
+    poster = db.Column(db.String(128), nullable=False)            # 发布者
     content = db.Column(db.Text(), nullable=False)                # 公告正文
     visitNum = db.Column(db.Integer, default=0)                   # 浏览次数
     updatedTime = db.Column(db.DateTime(), default=datetime.now)  # 更新时间

@@ -4,7 +4,7 @@ from flask import render_template, redirect, request, url_for, current_app, abor
 from flask_login import login_user, logout_user, current_user, login_required
 from datetime import datetime
 from . import article
-from ..models import News
+from ..models import News,Notice
 from .. import db
 
 
@@ -27,13 +27,19 @@ def news_detail(nid):
 @article.route('/notice', methods=['GET', 'POST'])
 @login_required
 def notice():
-    return render_template('article/notice.html', title=u"系统公告")
+    notices_list = Notice.query.all()
+    return render_template('article/notice.html', title=u"系统公告", notices_list = notices_list)
 
 
 @article.route('/notice/<int:nid>', methods=['GET', 'POST'])
 @login_required
 def notice_detail(nid):
-    return render_template('article/notice_detail.html', title=u"公告详情")
+    cur_notices = Notice.query.filter_by(id=nid).first_or_404()
+    cur_notices.visitNum = cur_notices.visitNum + 1
+    db.session.commit()
+    return render_template('article/notice_detail.html', title=u"公告详情", notice =cur_notices)
+
+
 
 
 @article.route('/help', methods=['GET', 'POST'])
