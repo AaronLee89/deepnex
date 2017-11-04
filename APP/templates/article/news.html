@@ -37,27 +37,15 @@
                                     <th><i class="fa fa-eye"></i> 浏览数</th>
                                     <th><span class="glyphicon glyphicon-time"></span> 发布时间</th>
                                 </tr>
+                                {% for n in news_list %}
                                 <tr>
-                                    <td>1</td>
-                                    <td><a href="{{ url_for('article.news_detail', nid=10086) }}">新一届中央政治局常委将在一中全会后亮相</a></td>
-                                    <td>新华社</td>
-                                    <td><span class="label label-success"> 3328</span></td>
-                                    <td>2017-10-25</td>
+                                    <td>{{ loop.index }}</td>
+                                    <td><a href="{{ url_for('article.news_detail', nid=n.id) }}">{{ n.title }}</a></td>
+                                    <td>{{ n.poster }}</td>
+                                    <td><span class="label label-success"> {{ n.visitNum }}</span></td>
+                                    <td>{{ n.updatedTime }}</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href="#">中国共产党第十九届中央委员会第一次全体会议公报</a></td>
-                                    <td>新华社</td>
-                                    <td><span class="label label-success"> 323</span></td>
-                                    <td>2017-10-24</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href="#">党的十九届一中全会通过了中央书记处成员</a></td>
-                                    <td>新华社</td>
-                                    <td><span class="label label-success"> 128</span></td>
-                                    <td>2017-10-23</td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>

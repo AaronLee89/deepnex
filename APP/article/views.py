@@ -4,19 +4,24 @@ from flask import render_template, redirect, request, url_for, current_app, abor
 from flask_login import login_user, logout_user, current_user, login_required
 from datetime import datetime
 from . import article
+from ..models import News
 from .. import db
 
 
 @article.route('/news', methods=['GET', 'POST'])
 @login_required
 def news():
-    return render_template('article/news.html', title=u"新闻资讯")
+    news_list = News.query.all()
+    return render_template('article/news.html', title=u"新闻资讯", news_list=news_list)
 
 
 @article.route('/news/<int:nid>', methods=['GET', 'POST'])
 @login_required
 def news_detail(nid):
-    return render_template('article/news_detail.html', title=u"资讯详情")
+    cur_news = News.query.filter_by(id=nid).first_or_404()
+    cur_news.visitNum = cur_news.visitNum + 1
+    db.session.commit()
+    return render_template('article/news_detail.html', title=u"资讯详情", news=cur_news)
 
 
 @article.route('/notice', methods=['GET', 'POST'])

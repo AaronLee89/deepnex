@@ -24,7 +24,7 @@ class Config:
 
     # 此处定义全局变量
     SECRET_KEY = os.environ.get('SECRET_KEY') or '!@#$%^&*12345678'  # 设置密钥，可能会用在某些涉及到加解密的功能中
-    SQLALCHEMY_TRACK_MODIFICATIONS = True  # 该项不设置为True的话可能会导致数据库报错
+    SQLALCHEMY_TRACK_MODIFICATIONS = True                            # 该项不设置为True的话可能会导致数据库报错
 
     # 头像的存储路径
     AVATAR_PATH = 'static/upload/avatar/'
